@@ -31,7 +31,7 @@ module TelephoneNumber
     def validate
       return [] unless country
       country.validations.select do |validation|
-        normalized_number.match?(Regexp.new("^(#{validation.pattern})$"))
+        normalized_number.match(Regexp.new("^(#{validation.pattern})$")) ? true : false
       end.map(&:name)
     end
 
